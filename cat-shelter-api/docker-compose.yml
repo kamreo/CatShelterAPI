@@ -1,0 +1,29 @@
+version: '3'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8000:8000
+        depends_on:
+            - db
+        environment:
+            - MYSQL_DATABASE=cat_shelter_db
+            - MYSQL_USER=cat_shelter
+            - MYSQL_PASSWORD=@Haslo1223
+            - MYSQL_ROOT_PASSWORD=@Haslo1223
+        volumes:
+            - ./config:/var/www/html/config
+            - ./database:/var/www/html/database
+            - ./routes:/var/www/html/routes
+            - ./app:/var/www/html/app
+    db:
+        image: mysql:8.0
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_DATABASE=cat_shelter_db
+            - MYSQL_USER=cat_shelter
+            - MYSQL_PASSWORD=@Haslo1223
+            - MYSQL_ROOT_PASSWORD=@Haslo1223
