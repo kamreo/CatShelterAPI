@@ -17,10 +17,10 @@ COPY . .
 
 # Install Composer dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-scripts --no-autoloader
+RUN composer install
 
 # Make load-service.sh executable
 RUN chmod +x scripts/load-service.sh
 
 # Set the entry point
-CMD ./scripts/load-service.sh db:3306 -- php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000
+CMD ./scripts/load-service.sh db:3306 -- php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
