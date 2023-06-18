@@ -40,6 +40,7 @@ return [
                 */
                 'annotations' => [
                     base_path('app'),
+                    base_path('routes'),
                 ],
 
             ],
@@ -100,6 +101,12 @@ return [
              * `scanOptions.exclude` overwrites this
             */
             'excludes' => [],
+        ],
+
+        'components' => [
+            'schemas' => [
+                base_path('app/SwaggerSchemas.php'),
+            ],
         ],
 
         'scanOptions' => [

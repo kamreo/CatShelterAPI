@@ -1,0 +1,660 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cat Shelter API",
+        "description": "This is a sample Cat Shelter API server.",
+        "contact": {
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/cats": {
+            "get": {
+                "tags": [
+                    "Cats"
+                ],
+                "summary": "Get list of cats",
+                "description": "Returns list of cats",
+                "operationId": "c65ac531156a3e0099fcd13dc88bf05c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cat"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cats"
+                ],
+                "summary": "Store new cat",
+                "description": "Store new cat and return cat data",
+                "operationId": "bf2a5bb79d0a21e9191b9101e75eb254",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CatRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cat created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cat"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/cats/{cat}": {
+            "get": {
+                "tags": [
+                    "Cats"
+                ],
+                "summary": "Get cat by ID",
+                "description": "Returns cat data",
+                "operationId": "8c1ea2cae0354da8c1d91676fa984bbc",
+                "parameters": [
+                    {
+                        "name": "cat",
+                        "in": "path",
+                        "description": "ID of the cat",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cat"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cat not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cats"
+                ],
+                "summary": "Update cat by ID",
+                "description": "Updates the cat data",
+                "operationId": "b2e2e4955153aedd23175820b8890028",
+                "parameters": [
+                    {
+                        "name": "cat",
+                        "in": "path",
+                        "description": "ID of the cat",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CatRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cat updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cat"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cat not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cats"
+                ],
+                "summary": "Delete cat by ID",
+                "description": "Deletes the cat",
+                "operationId": "be0db2ab060a66e5ddde3a7185fb9451",
+                "parameters": [
+                    {
+                        "name": "cat",
+                        "in": "path",
+                        "description": "ID of the cat",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Cat deleted successfully"
+                    },
+                    "404": {
+                        "description": "Cat not found"
+                    }
+                }
+            }
+        },
+        "/api/cat_shelters": {
+            "get": {
+                "tags": [
+                    "Cat Shelters"
+                ],
+                "summary": "Get list of cat shelters",
+                "description": "Returns list of cat shelters",
+                "operationId": "f45fd099c00e334ff63ea2cd1fc021d9",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CatShelter"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cat Shelters"
+                ],
+                "summary": "Store new cat shelter",
+                "description": "Store new cat shelter and return cat shelter data",
+                "operationId": "b7b207adaefdce4f5e95c9e7f9498247",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CatShelterRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cat shelter created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CatShelterRequest"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/cat_shelters/{catShelter}": {
+            "get": {
+                "tags": [
+                    "Cat Shelters"
+                ],
+                "summary": "Get cat shelter by ID",
+                "description": "Returns cat shelter data",
+                "operationId": "aa2b61393987860bb90779c411fee7dd",
+                "parameters": [
+                    {
+                        "name": "catShelter",
+                        "in": "path",
+                        "description": "ID of the cat shelter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CatShelter"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cat shelter not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cat Shelters"
+                ],
+                "summary": "Update cat shelter by ID",
+                "description": "Updates the cat shelter data",
+                "operationId": "ed363f6d649d57070e5a3cc3842eaaa0",
+                "parameters": [
+                    {
+                        "name": "catShelter",
+                        "in": "path",
+                        "description": "ID of the cat shelter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/CatShelterRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cat shelter updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CatShelter"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cat shelter not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cat Shelters"
+                ],
+                "summary": "Delete cat shelter by ID",
+                "description": "Deletes the cat shelter",
+                "operationId": "87ee5450537641a585093b2c05c847bc",
+                "parameters": [
+                    {
+                        "name": "catShelter",
+                        "in": "path",
+                        "description": "ID of the cat shelter",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Cat shelter deleted successfully"
+                    },
+                    "404": {
+                        "description": "Cat shelter not found"
+                    }
+                }
+            }
+        },
+        "/api/employees": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get list of employees",
+                "description": "Returns list of employees",
+                "operationId": "2058499f556b4bb9477e07e7a0912c43",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Store new employee",
+                "description": "Store new employee and return employee data",
+                "operationId": "7683a7b1aec5103190be815e1e30f7da",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EmployeeRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Employee created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/employees/{employee}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get employee by ID",
+                "description": "Returns employee data",
+                "operationId": "eea7041853f3dc89946576969345ac8b",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "path",
+                        "description": "ID of the employee",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Update employee by ID",
+                "description": "Updates the employee data",
+                "operationId": "0b6501c76361cbc0a64e6d425b5aeef4",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "path",
+                        "description": "ID of the employee",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EmployeeRequest"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Employee updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Employee"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Employee not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Delete employee by ID",
+                "description": "Deletes the employee",
+                "operationId": "5bb714ea86c5fe57744f2498d3f2c5b8",
+                "parameters": [
+                    {
+                        "name": "employee",
+                        "in": "path",
+                        "description": "ID of the employee",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Employee deleted successfully"
+                    },
+                    "404": {
+                        "description": "Employee not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Cat": {
+                "required": [
+                    "name",
+                    "age"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "age": {
+                        "type": "integer"
+                    },
+                    "cat_shelter_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CatRequest": {
+                "required": [
+                    "name",
+                    "age"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "age": {
+                        "type": "integer"
+                    },
+                    "cat_shelter_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CatShelter": {
+                "required": [
+                    "name",
+                    "address"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "CatShelterRequest": {
+                "required": [
+                    "name",
+                    "address"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Employee": {
+                "required": [
+                    "name",
+                    "position"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "cat_shelter_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "EmployeeRequest": {
+                "required": [
+                    "name",
+                    "position"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "cat_shelter_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

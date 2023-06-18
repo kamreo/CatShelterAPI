@@ -1,3 +1,4 @@
+# Set the entry point
 # Use the official PHP 8.2 image as the base image
 FROM php:8.2-cli
 
@@ -11,19 +12,15 @@ RUN apt-get update && apt-get install -y \
 # Set the working directory inside the container
 WORKDIR /var/www/html
 
-# Copy composer.lock and composer.json
-COPY composer.lock composer.json ./
+# Copy the application code
+COPY . .
 
 # Install Composer dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-scripts --no-autoloader
 
-# Copy the rest of the application code
-COPY . .
-
-# Generate the autoload files and complete Composer setup
-RUN composer dump-autoload --no-scripts --optimize
-RUN composer install --no-scripts
+# Make load-service.sh executable
+RUN chmod +x scripts/load-service.sh
 
 # Set the entry point
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD ./scripts/load-service.sh db:3306 -- php artisan migrate && php artisan serve --host=0.0.0.0 --port=8000
