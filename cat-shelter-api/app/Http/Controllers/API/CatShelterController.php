@@ -37,15 +37,12 @@ class CatShelterController extends Controller
      *     description="Store new cat shelter and return cat shelter data",
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/CatShelterRequest")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/CatShelterRequest")
      *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Cat shelter created successfully",
-     *         @OA\JsonContent(ref="#/components/schemas/CatShelterRequest")
+     *         @OA\JsonContent(ref="#/components/schemas/CatShelter")
      *     ),
      *     @OA\Response(
      *         response=400,
@@ -110,10 +107,7 @@ class CatShelterController extends Controller
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/CatShelterRequest")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/CatShelterRequest")
      *     ),
      *     @OA\Response(
      *         response=200,

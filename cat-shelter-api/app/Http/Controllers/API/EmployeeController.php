@@ -37,10 +37,7 @@ class EmployeeController extends Controller
      *     description="Store new employee and return employee data",
      *     @OA\RequestBody(
      *         required=true,
-     *          @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/EmployeeRequest")
-     *          )
+     *          @OA\JsonContent(ref="#/components/schemas/EmployeeRequest")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -113,10 +110,7 @@ class EmployeeController extends Controller
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *          @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/EmployeeRequest")
-     *         )
+     *          @OA\JsonContent(ref="#/components/schemas/EmployeeRequest")
      *     ),
      *     @OA\Response(
      *         response=200,

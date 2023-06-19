@@ -38,3 +38,7 @@ make app-test APP_CONTAINER_NAME=your_app_container_name
 ```bash
 make db-shell DB_CONTAINER_NAME=your_db_container_name
 ```
+## Running commands from app container
+```bash
+make app-run APP_CONTAINER_NAME=your_app_container_name command_to_run
+```

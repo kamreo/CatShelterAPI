@@ -37,10 +37,7 @@ class CatController extends Controller
      *     description="Store new cat and return cat data",
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/CatRequest")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/CatRequest")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -80,10 +77,7 @@ class CatController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/Cat")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Cat")
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -113,10 +107,7 @@ class CatController extends Controller
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/CatRequest")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/CatRequest")
      *     ),
      *     @OA\Response(
      *         response=200,
