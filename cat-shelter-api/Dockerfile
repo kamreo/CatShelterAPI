@@ -22,5 +22,8 @@ RUN composer install
 # Make load-service.sh executable
 RUN chmod +x scripts/load-service.sh
 
+# Generate Swagger documentation
+RUN php artisan l5-swagger:generate
+
 # Set the entry point
 CMD ./scripts/load-service.sh db:3306 -- php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
